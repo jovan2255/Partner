@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 
 
 class EventsComponent extends Component {
+
+
   render() {
     return this.props.events.map((event) =>(
-       <EventsItem key={event.id} event={event} />
+       <EventsItem key={event.id} event={event} markWindow={this.props.markWindow}/>
 
     ));
   }
 }
+
+//PropTypes
 EventsComponent.proptypes ={
 EventsComponent: PropTypes.array.isRequired
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 
-class EventsItem extends Component {
+export class EventsItem extends Component {
 getStyle = () => {
     return {
         padding: '10px',
@@ -12,10 +12,18 @@ getStyle = () => {
     }
 }
 
+
+
   render() {
+      const {id, title} = this.props.event;
     return(
         <div style={this.getStyle()}>
-            <p>{this.props.event.title}</p>
+        <p>
+        <input type="checkbox" onChange={this.props.markWindow.bind(this, id)} /> {' '}
+        {title}
+        </p>
+
+      
         </div>
     )
     
@@ -24,11 +32,7 @@ getStyle = () => {
 
 //  PropTypes
 EventsItem.propTypes = {
-    Event: PropTypes.object.isRequired
+    event: PropTypes.object.isRequired
 }
 
-
-const itemStyle ={
-    backgroundColor: '#f4f4f4'
-}
 export default EventsItem;

@@ -20,6 +20,14 @@ state = {
   ]
 }
 
+markWindow = (id) => {
+  this.setState({ events: this.state.events.map(event => {
+    if(event.id === id){
+      event.windowClosed = !event.windowClosed
+    }
+    return event;
+  })});
+}
 
 
   render() {
@@ -29,7 +37,7 @@ state = {
       <div className="App">
       <h1>Events</h1>
    
-      <EventsComponent events={this.state.events}/>
+      <EventsComponent events={this.state.events} markWindow={this.markWindow}/>
   
       </div>
     );
