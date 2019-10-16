@@ -11,19 +11,32 @@ getStyle = () => {
         'green' : 'red'
     }
 }
-  render() {
-      const {id, title} = this.props.event;
-    return(
-        <div style={this.getStyle()}>
-        <p>
-        <input type="checkbox" onChange={this.props.markWindow.bind(this, id)} /> {' '}
-        {title}
-        <button style={btnStyle} onClick={this.props.delEvent.bind(this, id)} style={btnStyle}>x</button>
-        </p>
-        </div>
-    )    
+handleChange() {
+    this.setState({title: "tese `       "})
+    }
+    handleSubmit() {
+        alert('A name was submitted: ' )
+    }
+    
+
+
+
+
+    render() {
+        const {id, title} = this.props.event;
+      return(
+          <div style={this.getStyle()}>
+          <p>
+          <input type="checkbox" onChange={this.props.markWindow.bind(this, id)} /> {' '}
+          {title}
+          <button style={btnStyle} onClick={this.props.delEvent.bind(this, id)} style={btnStyle}>x</button>
+   
+   </p>
+   
+          </div>
+      )    
+    }
   }
-}
 //  PropTypes
 EventsItem.propTypes = {
     event: PropTypes.object.isRequired
