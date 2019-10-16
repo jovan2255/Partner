@@ -19,9 +19,6 @@ handleChange() {
     }
     
 
-
-
-
     render() {
         const {id, title} = this.props.event;
       return(

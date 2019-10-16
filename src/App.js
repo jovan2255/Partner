@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import EventsComponent from './components/EventsComponent';
 import AddEvent from './components/addEvent';
+import {BrowserRouter as Router, Route } from 'react-router-dom';
+import About from './components/pages/About';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Agenda from './components/pages/Agenda';
+
+
 
 class App extends Component {
 state = {
@@ -58,14 +65,37 @@ var count = newId.events.length +1
   render() {
     console.log(this.state.events)
     return (
-      <div className="App">
-      <h1>Events</h1>
-      <AddEvent AddEvent={this.AddEvent}/>
-      <EventsComponent events={this.state.events} markWindow={this.markWindow} delEvent={this.delEvent}/>
+      <Router>
+      <div style={siteStyles} className="App">
+      <h1>Agenda Helper</h1>
+      <Header />
+      
+      <Route exact path="/" render={props=>(
+        <React.Fragment>
+    
+    <EventsComponent events={this.state.events} markWindow={this.markWindow} delEvent={this.delEvent}/>
    
+    <AddEvent AddEvent={this.AddEvent}/>
+
+   </React.Fragment>
+      )} />
+
+  <Route path="/about" component={About} />
+  <Route path="/Agenda" component={Agenda} />
+  <Footer />
       </div>
+      </Router>
     );
   }
+}
+
+const siteStyles ={
+ display: 'grid',
+marginTop: '5%',
+marginLeft: '25%',
+marginRight: '25%',
+
+
 }
 
 export default App;
