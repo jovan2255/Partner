@@ -29,6 +29,9 @@ markWindow = (id) => {
   })});
 }
 
+delEvent = (id) => {
+  this.setState({events: [...this.state.events.filter(event => event.id !== id)]})
+}
 
   render() {
     console.log(this.state.events)
@@ -37,7 +40,7 @@ markWindow = (id) => {
       <div className="App">
       <h1>Events</h1>
    
-      <EventsComponent events={this.state.events} markWindow={this.markWindow}/>
+      <EventsComponent events={this.state.events} markWindow={this.markWindow} delEvent={this.delEvent}/>
   
       </div>
     );
