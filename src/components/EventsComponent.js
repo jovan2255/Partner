@@ -8,7 +8,7 @@ class EventsComponent extends Component {
 
   render() {
     return this.props.events.map((event) =>(
-       <EventsItem key={event.id} event={event} markWindow={this.props.markWindow} delEvent={this.props.delEvent}/>
+       <EventsItem key={event.id} event={event} markWindow={this.props.markWindow} delEvent={this.props.delEvent} MapComplete={this.props.MapComplete}/>
     ));
   }
 }

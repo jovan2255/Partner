@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class AddEvent extends Component {
+class AddEvent extends Component {
 state = {
 title: ''
 }
@@ -14,11 +14,28 @@ onChange =(e) => this.setState({[e.target.name]: e.target.value});
 
     render() {
         return (
-    <form onSubmit={this.onSubmit}  style={{display:'flex'}} >
-        <input type = "text" name="title" placeholder="Add Event" style={{flex:'10'}}  value={this.state.title} onChange={this.onChange} />
+            <div>
+    <form style={FormStyle} onSubmit={this.onSubmit} >
+        <input type = "text" name="title" placeholder="Add Event" style={EventStyle}  value={this.state.title} onChange={this.onChange} />
         <input type="submit" value="Add Event"  className="btn" style={{flex:1}} />  
-    </form>
-        )
+    </form>  
+      </div>
+      )
     }
+}
+
+const EventStyle={
+    fontSize: '30px',
+    flex: '10'
+
+}
+
+const FormStyle ={
+    display: 'flex',
+    border: 'none',
+    curser: 'pointer',
+    fontSize: '24px',  
+    marginTop: '5%'
+    
 }
 export default AddEvent

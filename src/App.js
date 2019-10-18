@@ -7,7 +7,7 @@ import About from './components/pages/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Agenda from './components/pages/Agenda';
-
+import Done from './components/done';
 
 
 class App extends Component {
@@ -16,12 +16,14 @@ state = {
     {
       id:1,
       title: "Meet With Jimmy Johns",
-      windowClosed: false
+      windowClosed: false,
+      now: Date()
     },
     {
       id:2,
       title: "Meet With Chic Fil A",
-      windowClosed: true
+      windowClosed: true,
+      now: Date()
     }
 
   ]
@@ -49,18 +51,28 @@ AddEvent =(title) => {
  
 const newId= {events:[...this.state.events]}
 
-var count = newId.events.length +1
+var count = newId.events.length + 1
 
 
 
   const newEvent = {
     id: count,
     title: title,
-    windowClosed: true
+    windowClosed: true,
+    now: Date()
   }
 
   this.setState({events:[...this.state.events, newEvent]})
 }
+
+
+
+//Map Complete
+MapComplete = (windowClosed) => {
+  const newMap = {events: [...this.state.events.filter(event => event.windowClosed == false)]} 
+  this.setState({events: [...this.state.events.filter(event => event.windowClosed == false)]})
+}
+
 
   render() {
     console.log(this.state.events)
@@ -70,10 +82,11 @@ var count = newId.events.length +1
       <h1>Agenda Helper</h1>
       <Header />
       
+      
       <Route exact path="/" render={props=>(
         <React.Fragment>
     
-    <EventsComponent events={this.state.events} markWindow={this.markWindow} delEvent={this.delEvent}/>
+    <EventsComponent events={this.state.events} markWindow={this.markWindow} delEvent={this.delEvent} MapComplete={this.MapComplete}/>
    
     <AddEvent AddEvent={this.AddEvent}/>
 
@@ -94,8 +107,6 @@ const siteStyles ={
 marginTop: '5%',
 marginLeft: '25%',
 marginRight: '25%',
-
-
 }
 
 export default App;
